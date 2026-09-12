@@ -26,8 +26,8 @@ liquid-glass-ui      shared Iced glass components            <-- this repository
 ## What belongs here
 
 Shared glass surfaces and controls: panel, group, sidebar and titlebar surfaces,
-context menu, popover, scroll view, the icon and font helpers, and the
-`GlassForeground` / `GlassOverlay` layer routing.
+context menu, popover, scroll view, the icon and font helpers, the traffic-light
+control, and the `GlassForeground` / `GlassOverlay` layer routing.
 
 ## What does not
 
@@ -35,9 +35,28 @@ context menu, popover, scroll view, the icon and font helpers, and the
 | --- | --- |
 | Glass mechanism (materials, variants, geometry, GPU) | `liquid-rs` |
 | Design tokens, semantic colours, `GlassRole` profiles, `ClarityPolicy` | `bmol-designs` |
-| Platform and window semantics: native setup, chrome config and metrics, drag bar, rim, resizer, traffic lights | `bmol-window-shell` |
+| Platform and window semantics: native setup, chrome config and metrics, drag bar, rim, resizer | `bmol-window-shell` |
+| Traffic-light *semantics*: interaction state machine, material tuning, `GlassScene` builder | `bmol-window-shell` |
 | Iced-facing window orchestration (`IcedWindowPolicy`, `IcedWindowController`, `WindowCommand`, `WindowDragArea`) | `bmol-iced` |
 | Application composition, such as the Dock | `bmol-iced` |
+
+## The traffic-light control
+
+The window controls are the clearest justification for this crate existing.
+
+Their sphere material is drawn by the GPU Liquid Glass compositor, but the Apple
+vector glyphs are drawn by Iced. Those are different render passes, so the glyphs
+must be routed through the compositor's **overlay** layer explicitly. A caller that
+skips that step gets three blank circles and no error — which is exactly the bug
+that made this module move down here.
+
+`window_control_group` therefore wraps itself in `GlassOverlay`, and a caller only
+has to place the returned element on the glass. What stays in `bmol-window-shell` is
+the part that is about the *window*, not about drawing: which control means which
+window command, the hover/press state machine and its press-scale spring, the
+material tuning, and the `GlassScene` that turns a frame of that state into GPU
+nodes. The widget reports pointer facts (`TrafficLightsEvent`) and knows nothing
+about windows.
 
 ## Guards
 
@@ -60,5 +79,5 @@ through six `palette()` calls but its fields are read seventy-two times.
 
 ## Releases
 
-`v0.1.4` is the first release. Depend on the tag rather than `branch = "main"` when
-you want a reproducible build.
+`v0.1.5` adds the traffic-light control (`src/traffic_light/`). Depend on the tag
+rather than `branch = "main"` when you want a reproducible build.

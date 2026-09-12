@@ -3,7 +3,7 @@ resolver = "2"
 members = ["crates/liquid-glass-ui"]
 
 [workspace.package]
-version = "0.1.4"
+version = "0.1.5"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 rust-version = "1.85"
@@ -30,6 +30,11 @@ too_many_lines = "allow"
 too_many_arguments = "allow"
 similar_names = "allow"
 struct_excessive_bools = "allow"
+# The traffic-light control family calibrates several independent optical
+# switches (dark, active, disabled, edited, fullscreen) and reads most
+# naturally as explicit flags, mirroring AppKit's own vocabulary.
+fn_params_excessive_bools = "allow"
+if_not_else = "allow"
 doc_markdown = "allow"
 wildcard_imports = "allow"
 module_name_repetitions = "allow"

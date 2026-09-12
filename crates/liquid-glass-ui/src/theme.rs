@@ -66,7 +66,7 @@ impl From<bmol_designs::UiPalette> for UiPalette {
 ///
 /// Everything but [`Self::palette`] is a straight delegation to
 /// [`bmol_designs::UiTheme`], so this type adds no policy of its own.
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, Default, PartialEq)]
 pub struct UiTheme(bmol_designs::UiTheme);
 
 impl UiTheme {
@@ -126,12 +126,6 @@ impl UiTheme {
     #[must_use]
     pub fn compositor_chrome(self, role: GlassRole) -> GlassChrome {
         self.0.compositor_chrome(role)
-    }
-}
-
-impl Default for UiTheme {
-    fn default() -> Self {
-        Self(bmol_designs::UiTheme::default())
     }
 }
 
