@@ -1464,10 +1464,11 @@ dependencies = [
 
 [[package]]
 name = "liquid-glass-ui"
-version = "0.1.5"
+version = "0.1.6"
 dependencies = [
  "bmol-designs",
  "iced",
+ "iced_wgpu",
  "liquid-glass-scene",
  "spring-rs",
  "squircle-rs",

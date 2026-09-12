@@ -6,6 +6,13 @@ edition.workspace = true
 license.workspace = true
 rust-version.workspace = true
 
+[features]
+default = []
+# Routes the overlay hooks as no-ops for the bare `iced_wgpu` renderer. Enable
+# this when an application builds on `iced_wgpu::Renderer` directly instead of
+# on a compositor renderer; see `GlassForegroundRenderer`'s impl for it.
+iced-wgpu = ["dep:iced_wgpu"]
+
 [dependencies]
 iced = { version = "0.14.0", default-features = false, features = ["advanced", "canvas", "thread-pool", "svg", "image-without-codecs", "x11", "wayland"] }
 liquid-glass-scene = { git = "https://github.com/Erizeez/liquid-rs", branch = "main" }
@@ -13,6 +20,9 @@ squircle-rs = { git = "https://github.com/Erizeez/squircle-rs", tag = "v0.1.2" }
 bmol-designs = { git = "https://github.com/Erizeez/bmol-designs", tag = "v0.1.6", features = ["iced"] }
 spring-rs = { git = "https://github.com/Erizeez/spring-rs.git", tag = "v0.1.0" }
 vibrancy-rs = { git = "https://github.com/Erizeez/vibrancy-rs", tag = "v0.1.1" }
+# Only used for the no-op overlay impl behind the `iced-wgpu` feature. The
+# widget layer itself stays on the renderer-agnostic `iced` facade.
+iced_wgpu = { version = "0.14.0", optional = true }
 
 [lints]
 workspace = true

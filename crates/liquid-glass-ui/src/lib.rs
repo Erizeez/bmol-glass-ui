@@ -75,6 +75,23 @@ pub trait GlassForegroundRenderer {
 
 impl GlassForegroundRenderer for () {}
 
+/// The bare Iced GPU renderer has no Liquid Glass compositor, so there is no
+/// separate overlay pass for it to route into: every hook below is a no-op and
+/// the overlay layer is simply the normal one.
+///
+/// This says the same thing the `()` impl above says — a renderer that ignores
+/// these hooks is a valid target — and it has to live here, because neither an
+/// application nor a compositor crate can write it: the trait is ours and
+/// `iced_wgpu::Renderer` is not.
+///
+/// It is needed because an application may legitimately draw its glass with
+/// Iced rather than with a compositor; the reference and regular-glass demos
+/// do exactly that. The traffic-light widget routes its glyphs above the glass
+/// unconditionally, so such an application still has to name a renderer that
+/// satisfies the bound. Enable the `iced-wgpu` feature for it.
+#[cfg(feature = "iced-wgpu")]
+impl GlassForegroundRenderer for iced_wgpu::Renderer {}
+
 /// Wraps a widget whose pixels belong above the glass composition pass.
 pub struct GlassForeground<'a, Message, Theme, Renderer> {
     content: iced::Element<'a, Message, Theme, Renderer>,

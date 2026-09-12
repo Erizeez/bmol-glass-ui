@@ -79,5 +79,11 @@ through six `palette()` calls but its fields are read seventy-two times.
 
 ## Releases
 
-`v0.1.5` adds the traffic-light control (`src/traffic_light/`). Depend on the tag
-rather than `branch = "main"` when you want a reproducible build.
+`v0.1.6` is the current release. Depend on the tag rather than `branch = "main"`
+when you want a reproducible build.
+
+If your application builds on `iced_wgpu::Renderer` directly rather than on a
+compositor renderer, also enable the `iced-wgpu` feature: the traffic-light
+widget routes its glyphs above the glass pass unconditionally, so a renderer
+with no compositor still has to satisfy that bound. `bmol-window-shell` and
+`bmol-iced` enable it for you.
