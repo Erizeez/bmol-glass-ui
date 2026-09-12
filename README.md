@@ -48,8 +48,13 @@ The layering above is the target; this is how far it has got.
       there.
 - [x] Consequently this crate no longer depends on `bmol-window-shell` at all;
       `cargo tree` shows the shell absent from the whole graph. That is the
-      "siblings, not parent and child" property, and it is worth guarding with a
-      `cargo tree` check in CI.
+      "siblings, not parent and child" property.
+- [x] `scripts/check-layering.sh` guards it: it fails if `bmol-window-shell`
+      reappears in the normal graph, or if the graph carries more than one
+      `liquid-glass-scene` source (which would mean two incompatible
+      `GlassMaterial` types). Run it in CI next to the tests.
+- [x] `bmol-designs` moved to liquid-rs `branch = "main"` and this crate follows
+      it, so the graph resolves a single `liquid-glass-scene`.
 - [ ] `theme.rs` is still a fork of `bmol-designs::theme`. It should merge back with
       the iced-facing adapters (`UiTheme::from_iced`, `ClarityPolicy`) behind an
       optional `iced` feature. This step also has to move `bmol-designs` off
