@@ -1,120 +1,64 @@
 # bmol-glass-ui
 
-The **shared Liquid Glass widget layer**: the iced glass surfaces and controls that
+The **shared Liquid Glass widget layer**: the Iced glass surfaces and controls that
 both the window shell and an application need.
 
 It exists because one component has two consumers. A rounded, frosted Liquid Glass
 panel is the shell's context menu *and* an in-app panel; a titlebar surface is chrome
 in the shell and a header in an app. Those are the same widget, so they belong in a
-crate that sits *below* both — not inside one of them.
+crate that sits *below* both rather than inside one of them.
 
 ## Layering
 
 ```
-liquid-rs               mechanism: GlassScene / GlassMaterial / variant / geometry / GPU
+liquid-rs            mechanism: GlassScene / GlassMaterial / variant / geometry / GPU
    |
-bmol-designs            family style: tokens, semantic colours, GlassRole -> material profiles
+bmol-designs         family style: tokens, semantic colours, GlassRole -> material
+   |                 profiles, ClarityPolicy. Toolkit-free by default; the Iced
+   |                 adapters sit behind its optional `iced` feature.
    |
-liquid-glass-ui         shared iced glass components   <-- this repository
+liquid-glass-ui      shared Iced glass components            <-- this repository
    |
-   +-- bmol-window-shell      window shell   } siblings: neither depends on the other
-   +-- bmol-iced              application    }
+   +-- bmol-window-shell   window shell   } siblings: neither depends on the other
+   +-- bmol-iced           application    }
 ```
 
 ## What belongs here
 
-- Shared glass surfaces and controls: panel/group/sidebar/titlebar surfaces, context
-  menu, popover, scroll view, icon and font helpers, and the
-  `GlassForeground` / `GlassOverlay` layer routing.
+Shared glass surfaces and controls: panel, group, sidebar and titlebar surfaces,
+context menu, popover, scroll view, the icon and font helpers, and the
+`GlassForeground` / `GlassOverlay` layer routing.
 
 ## What does not
 
 | Concern | Home |
 | --- | --- |
 | Glass mechanism (materials, variants, geometry, GPU) | `liquid-rs` |
-| Design tokens, semantic colours, `GlassRole` -> `GlassMaterial` profiles | `bmol-designs` |
-| Window semantics (chrome config/plan/metrics, native setup, drag bar, rim, resizer) | `bmol-window-shell` |
-| Application composition (dock and similar) | `bmol-iced` |
+| Design tokens, semantic colours, `GlassRole` profiles, `ClarityPolicy` | `bmol-designs` |
+| Platform and window semantics: native setup, chrome config and metrics, drag bar, rim, resizer, traffic lights | `bmol-window-shell` |
+| Iced-facing window orchestration (`IcedWindowPolicy`, `IcedWindowController`, `WindowCommand`, `WindowDragArea`) | `bmol-iced` |
+| Application composition, such as the Dock | `bmol-iced` |
 
-## Migration status
+## Guards
 
-The layering above is the target; this is how far it has got.
+`scripts/check-layering.sh` fails the build if either of these breaks:
 
-- [x] Crate moved out of `bmol-iced` and builds standalone here.
-- [x] `window.rs` retired. It was only a facade over twelve window-semantics items
-      (`WindowShellController`, `setup_native_window`, chrome plan and metrics, the
-      drag bar, rim and resizer), which stay in `bmol-window-shell` where they belong.
-      `DEFAULT_WINDOW_CORNER_RADIUS` is a `bmol-designs` token and can be taken from
-      there.
-- [x] Consequently this crate no longer depends on `bmol-window-shell` at all;
-      `cargo tree` shows the shell absent from the whole graph. That is the
-      "siblings, not parent and child" property.
-- [x] `scripts/check-layering.sh` guards it: it fails if `bmol-window-shell`
-      reappears in the normal graph, or if the graph carries more than one
-      `liquid-glass-scene` source (which would mean two incompatible
-      `GlassMaterial` types). Run it in CI next to the tests.
-- [x] `bmol-designs` moved to liquid-rs `branch = "main"` and this crate follows
-      it, so the graph resolves a single `liquid-glass-scene`.
-- [x] `bmol-designs` moved to liquid-rs `branch = "main"`, and the fork's theme has
-      been merged into it: the authoritative values, `GlassRole::ContextMenu`,
-      `impl UiColorScheme`, `impl GlassChrome`, plus the iced adapters behind a new
-      optional `iced` feature (`UiColorScheme::from_mode`, `UiTheme::from_iced`,
-      `UiTheme::iced_theme`, `to_iced`). The default build of `bmol-designs` carries
-      no `iced` in its graph at all, which is what lets the platform and
-      traffic-light crates depend on it.
-- [x] The fork is gone. `src/theme.rs` is now the single conversion point: the
-      toolkit-free types (`GlassChrome`, `GlassRole`, `UiColorScheme`,
-      `UiCornerStyle`) are re-exported from `bmol-designs` unchanged, `UiPalette`
-      is re-typed in Iced's colour and built by converting the scene palette once,
-      and `UiTheme` delegates every method. The public names and all seventy-two
-      palette access sites are untouched, and `bmol-designs` is the only place the
-      values live.
-- [ ] `bmol-iced` still hosts the original copy of this crate and its `dock.rs`
-      (application composition, which belongs at the app layer). Rewiring it to this
-      crate is what finally deletes the old copy.
+1. `bmol-window-shell` reappears in the normal dependency graph, which would put
+   the shell *above* this crate again instead of beside it;
+2. the graph resolves more than one `liquid-glass-scene` source, which would mean
+   two incompatible `GlassMaterial` types that cannot be passed across.
 
-      The public-API delta between the old copy and this one is exactly two groups,
-      which is the whole of what the rewire has to handle:
+Run it in CI next to the tests.
 
-      1. **The retired window facade** -- `WindowCommand`, `WindowExpandBehavior`,
-         `IcedWindowController`, `IcedWindowPolicy`, `WindowDragArea`,
-         `DEFAULT_WINDOW_CORNER_RADIUS` and `pub mod window`. Consumers take these
-         from `bmol-window-shell` (and `bmol-designs` for the corner radius).
-      2. **Work that only exists in `bmol-iced`'s working tree** -- `pub mod dock`
-         with `DockApp`, `WallpaperStyle`, `WallpaperBuffer`, `PhysicalPlateConfig`,
-         `LayoutMetrics`, `BlurPreset` and the wallpaper and plate helpers, plus
-         `ClarityPolicy`. These have not been committed yet. `dock` and the wallpaper
-         helpers belong at the application layer; `ClarityPolicy` is a style policy
-         and belongs in `bmol-designs` next to the theme.
+## The theme
 
-      Everything else -- `GlassRole`, `UiColorScheme`, `UiCornerStyle`, `GlassChrome`
-      and the palette -- is present here too; it simply arrives as a re-export of
-      `bmol-designs` rather than as a definition.
-- [x] The asset helpers `app_icon_png` and `load_system_wallpaper_rgba` need no
-      move: both are already defined in `bmol-window-native`, the lowest layer, and
-      `bmol-window-shell` only re-exports them. `dock.rs` (which never lived here)
-      just has to import them from `bmol-window-native`. Nothing had to be sunk
-      into `bmol-window-platform`.
+`src/theme.rs` is the single conversion point to `bmol-designs`. The palette and
+chrome values live there; only `UiPalette` is re-typed in Iced's colour, built once
+by `UiPalette::from(bmol_designs::UiPalette)`, and `UiTheme` delegates every method.
+Converting at each access site was measured and rejected: the palette is reached
+through six `palette()` calls but its fields are read seventy-two times.
 
-### What the theme merge actually involves
+## Releases
 
-Measured against `bmol-designs`, the two `theme.rs` files differ in **one
-structural way**: the fork types `UiPalette`'s eighteen fields as `iced::Color`,
-while `bmol-designs` types them as the scene `Color`. `GlassChrome` is scene-typed
-in both, and the fork already writes its palette *values* in the scene type
-(`GlassColor::rgba(..)`) and converts at the boundary in a single helper.
-
-So under the "optional iced feature" plan the port is close to mechanical:
-
-- lift the fork's values, `GlassRole::ContextMenu`, `impl UiColorScheme` and
-  `impl GlassChrome` into `bmol-designs`, keeping the scene `Color` palette;
-- put the iced adapters (`from_iced`, the colour conversion) behind a new optional
-  `iced` feature;
-- switch this crate to re-export `bmol_designs`' theme instead of its own, which is
-  the part that needs the roughly eighteen palette-field accesses in
-  `components.rs`, `context_menu.rs`, `popover.rs` and `scroll_view.rs` to convert.
-
-Evidence that the fork is the authoritative copy: it carries six substantive
-commits (device-measured context-menu calibration, 64 pt heavy-blur dark/light
-modes, layered rendering work) against `bmol-designs`' two, and it has a
-`GlassRole::ContextMenu` variant that `bmol-designs` lacks.
+`v0.1.4` is the first release. Depend on the tag rather than `branch = "main"` when
+you want a reproducible build.
