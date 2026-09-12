@@ -36,7 +36,9 @@ pub use scroll_view::{
     ScrollbarConfig, SpringScrollState, SpringScrollView, spring_scroll_view,
     spring_scroll_view_with_config,
 };
-pub use theme::{GlassChrome, GlassRole, UiColorScheme, UiCornerStyle, UiPalette, UiTheme};
+pub use theme::{
+    ClarityPolicy, GlassChrome, GlassRole, UiColorScheme, UiCornerStyle, UiPalette, UiTheme,
+};
 
 use iced::advanced::text::Renderer as TextRenderer;
 use iced::{
