@@ -72,6 +72,24 @@ The layering above is the target; this is how far it has got.
 - [ ] `bmol-iced` still hosts the original copy of this crate and its `dock.rs`
       (application composition, which belongs at the app layer). Rewiring it to this
       crate is what finally deletes the old copy.
+
+      The public-API delta between the old copy and this one is exactly two groups,
+      which is the whole of what the rewire has to handle:
+
+      1. **The retired window facade** -- `WindowCommand`, `WindowExpandBehavior`,
+         `IcedWindowController`, `IcedWindowPolicy`, `WindowDragArea`,
+         `DEFAULT_WINDOW_CORNER_RADIUS` and `pub mod window`. Consumers take these
+         from `bmol-window-shell` (and `bmol-designs` for the corner radius).
+      2. **Work that only exists in `bmol-iced`'s working tree** -- `pub mod dock`
+         with `DockApp`, `WallpaperStyle`, `WallpaperBuffer`, `PhysicalPlateConfig`,
+         `LayoutMetrics`, `BlurPreset` and the wallpaper and plate helpers, plus
+         `ClarityPolicy`. These have not been committed yet. `dock` and the wallpaper
+         helpers belong at the application layer; `ClarityPolicy` is a style policy
+         and belongs in `bmol-designs` next to the theme.
+
+      Everything else -- `GlassRole`, `UiColorScheme`, `UiCornerStyle`, `GlassChrome`
+      and the palette -- is present here too; it simply arrives as a re-export of
+      `bmol-designs` rather than as a definition.
 - [x] The asset helpers `app_icon_png` and `load_system_wallpaper_rgba` need no
       move: both are already defined in `bmol-window-native`, the lowest layer, and
       `bmol-window-shell` only re-exports them. `dock.rs` (which never lived here)
