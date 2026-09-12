@@ -13,6 +13,7 @@ pub mod font;
 pub mod icon;
 pub mod popover;
 pub mod scroll_view;
+pub mod traffic_light;
 mod theme;
 
 use std::sync::atomic::{AtomicU64, Ordering};
