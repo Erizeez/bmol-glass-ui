@@ -10,7 +10,7 @@ rust-version.workspace = true
 iced = { version = "0.14.0", default-features = false, features = ["advanced", "canvas", "thread-pool", "svg", "image-without-codecs", "x11", "wayland"] }
 liquid-glass-scene = { git = "https://github.com/Erizeez/liquid-rs", branch = "main" }
 squircle-rs = { git = "https://github.com/Erizeez/squircle-rs", tag = "v0.1.2" }
-bmol-designs = { git = "https://github.com/Erizeez/bmol-designs", branch = "main" }
+bmol-designs = { git = "https://github.com/Erizeez/bmol-designs", branch = "main", features = ["iced"] }
 spring-rs = { git = "https://github.com/Erizeez/spring-rs.git", tag = "v0.1.0" }
 vibrancy-rs = { git = "https://github.com/Erizeez/vibrancy-rs", tag = "v0.1.1" }
 

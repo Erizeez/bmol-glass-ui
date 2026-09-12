@@ -62,15 +62,13 @@ The layering above is the target; this is how far it has got.
       `UiTheme::iced_theme`, `to_iced`). The default build of `bmol-designs` carries
       no `iced` in its graph at all, which is what lets the platform and
       traffic-light crates depend on it.
-- [ ] This crate still holds a copy of that theme. Delete `src/theme.rs` and take
-      the types from `bmol-designs` instead -- **but not by converting call sites.**
-      Measured: the palette is reached through only six `palette()` calls, while its
-      fields are read **72** times, so per-site conversion is the wrong shape.
-      Keep a thin adapter here instead: an iced-typed `UiPalette` with the same
-      fifteen fields, built by converting the scene palette once
-      (`bmol_designs::to_iced`), and a `UiTheme` that delegates. That preserves both
-      the public names and all 72 access sites, and leaves `bmol-designs` as the
-      single source of values.
+- [x] The fork is gone. `src/theme.rs` is now the single conversion point: the
+      toolkit-free types (`GlassChrome`, `GlassRole`, `UiColorScheme`,
+      `UiCornerStyle`) are re-exported from `bmol-designs` unchanged, `UiPalette`
+      is re-typed in Iced's colour and built by converting the scene palette once,
+      and `UiTheme` delegates every method. The public names and all seventy-two
+      palette access sites are untouched, and `bmol-designs` is the only place the
+      values live.
 - [ ] `bmol-iced` still hosts the original copy of this crate and its `dock.rs`
       (application composition, which belongs at the app layer). Rewiring it to this
       crate is what finally deletes the old copy.
