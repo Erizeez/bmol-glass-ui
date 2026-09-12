@@ -55,12 +55,22 @@ The layering above is the target; this is how far it has got.
       `GlassMaterial` types). Run it in CI next to the tests.
 - [x] `bmol-designs` moved to liquid-rs `branch = "main"` and this crate follows
       it, so the graph resolves a single `liquid-glass-scene`.
-- [ ] `theme.rs` is still a fork of `bmol-designs::theme`. It should merge back with
-      the iced-facing adapters (`UiTheme::from_iced`, `ClarityPolicy`) behind an
-      optional `iced` feature. This step also has to move `bmol-designs` off
-      `liquid-rs` tag `v0.1.3` onto `branch = "main"`: today the graph carries two
-      copies of `liquid-glass-scene`, so a material from `bmol-designs` is not the
-      same type as one from this crate and must not be mixed.
+- [x] `bmol-designs` moved to liquid-rs `branch = "main"`, and the fork's theme has
+      been merged into it: the authoritative values, `GlassRole::ContextMenu`,
+      `impl UiColorScheme`, `impl GlassChrome`, plus the iced adapters behind a new
+      optional `iced` feature (`UiColorScheme::from_mode`, `UiTheme::from_iced`,
+      `UiTheme::iced_theme`, `to_iced`). The default build of `bmol-designs` carries
+      no `iced` in its graph at all, which is what lets the platform and
+      traffic-light crates depend on it.
+- [ ] This crate still holds a copy of that theme. Delete `src/theme.rs` and take
+      the types from `bmol-designs` instead -- **but not by converting call sites.**
+      Measured: the palette is reached through only six `palette()` calls, while its
+      fields are read **72** times, so per-site conversion is the wrong shape.
+      Keep a thin adapter here instead: an iced-typed `UiPalette` with the same
+      fifteen fields, built by converting the scene palette once
+      (`bmol_designs::to_iced`), and a `UiTheme` that delegates. That preserves both
+      the public names and all 72 access sites, and leaves `bmol-designs` as the
+      single source of values.
 - [ ] `bmol-iced` still hosts the original copy of this crate and its `dock.rs`
       (application composition, which belongs at the app layer). Rewiring it to this
       crate is what finally deletes the old copy.
