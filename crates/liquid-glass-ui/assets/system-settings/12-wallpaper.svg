@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 362-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12.0351 9.91503">
+ <defs>
+  <style>.defaults{-sfsymbols-draw-reverses-motion-groups:true;-sfsymbols-variable-value-mode:color;}.hierarchical-0:primary{-sfsymbols-layer-tags:photo;-sfsymbols-motion-group:0;}.hierarchical-1:primary{-sfsymbols-layer-tags:photo;-sfsymbols-motion-group:0;}.monochrome-0{-sfsymbols-layer-tags:photo;-sfsymbols-motion-group:0;}.monochrome-1{-sfsymbols-layer-tags:photo;-sfsymbols-motion-group:0;}.multicolor-0:tintColor{-sfsymbols-layer-tags:photo;-sfsymbols-motion-group:0;}.multicolor-1:tintColor{-sfsymbols-layer-tags:photo;-sfsymbols-motion-group:0;}</style>
+ </defs>
+ <g id="s" transform="matrix(0.00634765 0 0 0.00634765 -1.26953 9.53417)">
+  <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary" d="m648-60h1056c235 0 348-91 308-248l-459-427c-34-31-75-46-115-46-42 0-81 14-116 45l-352 315-143-128c-33-29-70-44-106-44-41 0-67 14-100 43l-281 242c0 157 113 248 308 248Zm-136 120h1272c196 0 312-116 312-312v-938c0-196-116-312-312-312h-1272c-196 0-312 116-312 312v938c0 196 116 312 312 312Zm46-290c-46 0-68-18-68-68v-846c0-50 22-68 68-68h1180c46 0 68 18 68 68v846c0 50-22 68-68 68Z"/>
+  <path class="monochrome-1 multicolor-1:tintColor hierarchical-1:primary" d="m924-672c111 0 203-92 203-204 0-111-92-204-203-204-112 0-204 93-204 204 0 112 92 204 204 204Z"/>
+ </g>
+</svg>

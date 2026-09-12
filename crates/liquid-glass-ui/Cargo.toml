@@ -1,0 +1,19 @@
+[package]
+name = "liquid-glass-ui"
+description = "UI-facing Liquid Glass components and builders for Iced."
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+iced = { version = "0.14.0", default-features = false, features = ["advanced", "canvas", "thread-pool", "svg", "image-without-codecs", "x11", "wayland"] }
+liquid-glass-scene = { git = "https://github.com/Erizeez/liquid-rs", branch = "main" }
+squircle-rs = { git = "https://github.com/Erizeez/squircle-rs", tag = "v0.1.2" }
+bmol-designs = { git = "https://github.com/Erizeez/bmol-designs", tag = "v0.1.5" }
+bmol-window-shell = { git = "https://github.com/Erizeez/bmol-window-shell", branch = "main" }
+spring-rs = { git = "https://github.com/Erizeez/spring-rs.git", tag = "v0.1.0" }
+vibrancy-rs = { git = "https://github.com/Erizeez/vibrancy-rs", tag = "v0.1.1" }
+
+[lints]
+workspace = true

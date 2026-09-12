@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 362-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10.918 10.918">
+ <defs>
+  <style>.defaults{-sfsymbols-draw-reverses-motion-groups:true;-sfsymbols-variable-value-mode:color;}.hierarchical-0:primary{-sfsymbols-layer-tags:person.crop.circle;-sfsymbols-motion-group:0;}.monochrome-0{-sfsymbols-layer-tags:person.crop.circle;-sfsymbols-motion-group:0;}.multicolor-0:tintColor{-sfsymbols-layer-tags:person.crop.circle;-sfsymbols-motion-group:0;}</style>
+ </defs>
+ <g id="s" transform="matrix(0.00634765 0 0 0.00634765 -0.888671 10.042)">
+  <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary" d="m1000 138c475 0 860-385 860-860s-385-860-860-860-860 385-860 860 385 860 860 860Zm0-290c-315 0-570-255-570-570s255-570 570-570 570 255 570 570-255 570-570 570Zm453-50-5-35c-104-114-250-196-448-196s-344 82-448 196l-5 35c179 117 318 157 453 157s274-40 453-157Zm-453-339c156 0 275-134 275-300 0-157-121-294-275-294s-276 137-275 294c0 166 119 300 275 300Z"/>
+ </g>
+</svg>

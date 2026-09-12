@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 362-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 7.82031 10.6641">
+ <defs>
+  <style>.defaults{-sfsymbols-draw-reverses-motion-groups:true;-sfsymbols-variable-value-mode:color;}.hierarchical-0:primary{-sfsymbols-layer-tags:lock;-sfsymbols-motion-group:0;}.monochrome-0{-sfsymbols-layer-tags:lock;-sfsymbols-motion-group:0;}.multicolor-0:systemGrayColor{-sfsymbols-layer-tags:lock;-sfsymbols-motion-group:0;}</style>
+ </defs>
+ <g id="s" transform="matrix(0.00634765 0 0 0.00634765 -1.39648 10.042)">
+  <path class="monochrome-0 multicolor-0:systemGrayColor hierarchical-0:primary" d="m426 98h820c138 0 206-69 206-220v-633c0-149-68-218-206-218h-820c-138 0-206 69-206 218v633c0 151 68 220 206 220Zm115-250c-27 0-41-14-41-45v-482c0-31 14-44 41-44h591c27 0 40 13 40 44v482c0 31-13 45-40 45Zm-146-729h257v-259c0-113 75-192 184-192 108 0 185 79 185 192v259h257v-259c0-260-183-442-442-442s-441 182-441 442Z"/>
+ </g>
+</svg>

@@ -1,0 +1,55 @@
+[workspace]
+resolver = "2"
+members = ["crates/liquid-glass-ui"]
+
+[workspace.package]
+version = "0.1.4"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+rust-version = "1.85"
+authors = ["Erizeez <zhangyongcheng@sjtu.edu.cn>"]
+repository = "https://github.com/Erizeez/bmol-glass-ui"
+homepage = "https://github.com/Erizeez/bmol-glass-ui"
+keywords = ["rust", "ui", "wgpu", "iced", "liquid-glass", "macos"]
+categories = ["gui", "graphics", "rendering"]
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+missing_debug_implementations = "warn"
+missing_docs = "allow"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+pedantic = { level = "warn", priority = -1 }
+cast_possible_truncation = "allow"
+cast_sign_loss = "allow"
+cast_precision_loss = "allow"
+cast_possible_wrap = "allow"
+float_cmp = "allow"
+too_many_lines = "allow"
+too_many_arguments = "allow"
+similar_names = "allow"
+struct_excessive_bools = "allow"
+doc_markdown = "allow"
+wildcard_imports = "allow"
+module_name_repetitions = "allow"
+must_use_candidate = "allow"
+missing_errors_doc = "allow"
+missing_panics_doc = "allow"
+struct_field_names = "allow"
+needless_pass_by_value = "allow"
+missing_fields_in_debug = "allow"
+assertions_on_constants = "allow"
+uninlined_format_args = "allow"
+manual_clamp = "allow"
+collapsible_match = "allow"
+single_match = "allow"
+approx_constant = "allow"
+bool_to_int_with_if = "allow"
+duplicated_attributes = "allow"
+empty_line_after_outer_attr = "allow"
+return_self_not_must_use = "allow"
+no_effect_underscore_binding = "allow"
+field_reassign_with_default = "allow"
+semicolon_if_nothing_returned = "allow"
+manual_midpoint = "allow"

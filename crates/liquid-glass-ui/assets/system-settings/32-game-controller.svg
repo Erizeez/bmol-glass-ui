@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 362-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15.5518 9.95947">
+ <defs>
+  <style>.defaults{-sfsymbols-draw-reverses-motion-groups:true;-sfsymbols-variable-value-mode:color;}.hierarchical-0:secondary{-sfsymbols-layer-tags:gamecontroller;-sfsymbols-motion-group:1;}.hierarchical-1:primary{-sfsymbols-layer-tags:gamecontroller;-sfsymbols-motion-group:0;}.monochrome-0{-sfsymbols-layer-tags:gamecontroller;-sfsymbols-motion-group:1;}.monochrome-1{-sfsymbols-layer-tags:gamecontroller;-sfsymbols-motion-group:0;}.multicolor-0:tintColor{-sfsymbols-layer-tags:gamecontroller;-sfsymbols-motion-group:1;}.multicolor-1:tintColor{-sfsymbols-layer-tags:gamecontroller;-sfsymbols-motion-group:0;}</style>
+ </defs>
+ <g id="s" transform="matrix(0.00634765 0 0 0.00634765 -1.26953 9.55957)">
+  <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:secondary" d="m200-284c0 225 151 347 343 347 158 0 266-64 355-147l127-117c19-17 25-24 53-24h694c28 0 34 7 53 24l127 117c90 82 197 147 355 147 192 0 343-122 343-347 0-100-17-208-51-321-50-167-135-389-214-555-70-146-120-242-320-287-167-38-385-59-640-59s-473 21-640 59c-200 45-250 141-320 287-79 166-164 388-214 555-34 113-51 221-51 321Zm268-28c0-40 9-87 30-159 55-188 144-421 222-588 35-76 55-103 108-116 153-37 354-55 597-55s444 18 597 55c53 13 73 40 108 116 77 167 167 400 222 588 21 72 30 119 30 159 0 66-46 101-104 101-41 0-87-19-128-56l-201-183c-41-38-72-51-119-51h-810c-47 0-78 13-119 51l-201 183c-40 38-87 56-128 56-58 0-104-35-104-101Z"/>
+  <path class="monochrome-1 multicolor-1:tintColor hierarchical-1:primary" d="m761-853c0 58 40 96 100 96h91v84c0 62 41 104 102 104s102-42 102-104v-84h85c64 0 106-38 106-96s-42-96-106-96h-85v-84c0-62-41-104-102-104s-102 42-102 104v84h-91c-60 0-100 38-100 96Zm1164 5c74 0 131-56 131-130s-57-131-131-131c-73 0-131 57-131 131s58 130 131 130Zm-244 251c74 0 131-57 131-130 0-74-57-131-131-131-73 0-131 57-131 131 0 73 58 130 131 130Z"/>
+ </g>
+</svg>

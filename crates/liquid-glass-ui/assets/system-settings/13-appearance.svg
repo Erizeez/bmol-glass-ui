@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 362-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10.2515 10.2451">
+ <defs>
+  <style>.defaults{-sfsymbols-draw-reverses-motion-groups:false;-sfsymbols-variable-value-mode:color;}.hierarchical-0:primary{-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:1;}.hierarchical-1:primary{-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:1;}.hierarchical-2:primary{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:0;}.hierarchical-3:primary{-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:0;}.monochrome-0{-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:1;}.monochrome-1{-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:1;}.monochrome-2{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:0;}.monochrome-3{-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:0;}.multicolor-0:tintColor{-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:1;}.multicolor-1:tintColor{-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:1;}.multicolor-2:tintColor{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:0;}.multicolor-3:tintColor{-sfsymbols-layer-tags:appearance.darkmode;-sfsymbols-motion-group:0;}</style>
+ </defs>
+ <g id="s" transform="matrix(0.00634765 0 0 0.00634765 -0.888671 9.70556)">
+  <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary" d="m947 85c446 0 808-361 808-807s-362-807-808-807c-445 0-807 361-807 807s362 807 807 807Zm0-152c-362 0-654-293-654-655s292-655 654-655 655 293 655 655-293 655-655 655Z"/>
+  <path class="monochrome-1 multicolor-1:tintColor hierarchical-1:primary" d="m947 37v-1518c-419 0-759 340-759 759s340 759 759 759Z"/>
+  <path class="monochrome-2 multicolor-2:tintColor hierarchical-2:primary" d="m947-408c173 0 314-141 314-314s-141-314-314-314c-172 0-313 141-313 314s141 314 313 314Z" opacity="0.0"/>
+  <path class="monochrome-3 multicolor-3:tintColor hierarchical-3:primary" d="m947-408c173 0 314-141 314-314s-141-314-314-314Z"/>
+ </g>
+</svg>

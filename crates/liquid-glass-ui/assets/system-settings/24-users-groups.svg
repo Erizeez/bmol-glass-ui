@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 362-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 15.3359 10.626">
+ <defs>
+  <style>.defaults{-sfsymbols-draw-reverses-motion-groups:true;-sfsymbols-variable-value-mode:color;}.hierarchical-0:secondary{-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:1;}.hierarchical-1:primary{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:0;}.hierarchical-2:primary{-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:0;}.monochrome-0{-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:1;}.monochrome-1{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:0;}.monochrome-2{-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:0;}.multicolor-0:tintColor{-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:1;}.multicolor-1:tintColor{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:0;}.multicolor-2:tintColor{-sfsymbols-layer-tags:person.2;-sfsymbols-motion-group:0;}</style>
+ </defs>
+ <g id="s" transform="matrix(0.00634765 0 0 0.00634765 -1.26953 9.41992)">
+  <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:secondary" d="m822-688c179 0 321-153 321-346 0-186-146-341-321-341-176 0-321 156-321 341 0 194 142 346 321 346Zm0-216c-57 0-105-54-105-130 0-68 50-125 105-125 54 0 105 57 105 125 0 76-47 130-105 130Zm-410 945h820c142 0 212-70 212-192 0-259-277-490-622-490s-622 231-622 490c0 122 70 192 212 192Zm47-217c-10 0-12-7-12-12 0-112 161-238 375-238s375 126 375 238c0 5-2 12-12 12Z"/>
+  <path class="monochrome-1 multicolor-1:tintColor hierarchical-1:primary" d="m1285 190h942c287 0 389-166 389-330 0-352-386-652-860-652s-860 300-860 652c0 164 102 330 389 330Z" opacity="0.0"/>
+  <path class="monochrome-1 monochrome-2 multicolor-1:tintColor multicolor-2:tintColor hierarchical-1:primary hierarchical-2:primary" d="m1756-705c204 0 364-173 364-392 0-211-164-387-364-387s-364 176-364 387c0 219 160 392 364 392Z" opacity="0.0"/>
+  <path class="monochrome-2 multicolor-2:tintColor hierarchical-2:primary" d="m1756-925c-79 0-144-72-144-173 0-91 68-166 144-166 77 0 144 75 144 167 0 99-64 172-144 172Zm-471 965h942c158 0 239-59 239-180 0-260-313-502-710-502s-710 242-710 502c0 121 81 180 239 180Zm33-220c-10 0-12-7-12-13 0-78 170-229 450-229s450 151 450 229c0 6-2 13-12 13Z"/>
+ </g>
+</svg>

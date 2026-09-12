@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Generator: Apple Native CoreSVG 362-->
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 12.0098 11.959">
+ <defs>
+  <style>.defaults{-sfsymbols-draw-reverses-motion-groups:false;-sfsymbols-variable-value-mode:color;}.hierarchical-0:primary{-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:2;}.hierarchical-1:primary{-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:1;}.hierarchical-2:primary{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:0;}.hierarchical-3:primary{-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:0;}.monochrome-0{-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:2;}.monochrome-1{-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:1;}.monochrome-2{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:0;}.monochrome-3{-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:0;}.multicolor-0:tintColor{-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:2;}.multicolor-1:tintColor{-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:1;}.multicolor-2:tintColor{opacity:0.0;-sfsymbols-clear-behind:true;-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:0;}.multicolor-3:tintColor{-sfsymbols-layer-tags:printer;-sfsymbols-motion-group:0;}</style>
+ </defs>
+ <g id="s" transform="matrix(0.00634765 0 0 0.00634765 -1.26953 10.7529)">
+  <path class="monochrome-0 multicolor-0:tintColor hierarchical-0:primary" d="m554-1280h250v-152c0-27 16-42 41-42h602c25 0 41 15 41 42v152h250v-130c0-190-94-284-284-284h-616c-190 0-284 94-284 284Z"/>
+  <path class="monochrome-1 multicolor-1:tintColor hierarchical-1:primary" d="m508-90h1276c195 0 308-113 308-308v-658c0-195-113-308-308-308h-1276c-195 0-308 113-308 308v658c0 195 113 308 308 308Zm-58-305v-663c0-42 23-66 65-66h1262c42 0 65 24 65 66v663c0 42-23 65-65 65h-1262c-42 0-65-23-65-65Zm1134-436c66 0 120-54 120-120s-54-120-120-120-120 54-120 120 54 120 120 120Z"/>
+  <path class="monochrome-2 monochrome-3 multicolor-2:tintColor multicolor-3:tintColor hierarchical-2:primary hierarchical-3:primary" d="m830 190h632c170 0 249-79 249-249v-506c0-170-79-249-249-249h-632c-170 0-249 79-249 249v506c0 170 79 249 249 249Z" opacity="0.0"/>
+  <path class="monochrome-3 multicolor-3:tintColor hierarchical-3:primary" d="m830-29c-18 0-29-10-29-29v-507c0-19 11-29 29-29h632c18 0 29 10 29 29v507c0 19-11 29-29 29Zm120-320h394c43 0 76-34 76-77 0-42-33-75-76-75h-394c-44 0-77 33-77 75 0 43 34 77 77 77Zm0 232h394c43 0 76-33 76-75 0-43-33-77-76-77h-394c-43 0-77 34-77 77 0 42 33 75 77 75Z"/>
+ </g>
+</svg>
