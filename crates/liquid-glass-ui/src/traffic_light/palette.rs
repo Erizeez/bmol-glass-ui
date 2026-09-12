@@ -3,8 +3,8 @@
 //! Everything here is pure data and pure functions: no Iced, no GPU, no global
 //! state, so it can be asserted in ordinary unit tests.
 
-use super::action::WindowControlAction;
-use super::layout::WINDOW_CONTROL_NATIVE_SIZE;
+use crate::traffic_light::action::WindowControlAction;
+use crate::traffic_light::layout::WINDOW_CONTROL_NATIVE_SIZE;
 use liquid_glass_scene::Color;
 
 // Authentic Apple Text Glyphs matching original high-clarity typography
@@ -57,7 +57,7 @@ pub const fn rgb8(r: u8, g: u8, b: u8) -> Color {
 #[must_use]
 pub const fn window_control_icon(
     action: WindowControlAction,
-    expand_behavior: super::action::WindowExpandBehavior,
+    expand_behavior: crate::traffic_light::action::WindowExpandBehavior,
 ) -> &'static str {
     match action {
         WindowControlAction::Close => SVG_CLOSE,
@@ -310,7 +310,7 @@ pub fn resolve_button_colors(
 #[cfg(test)]
 mod tests {
     use super::*;
-    use super::action::WindowExpandBehavior;
+    use crate::traffic_light::action::WindowExpandBehavior;
 
     #[test]
     fn close_and_minimize_glyphs_get_extra_optical_weight() {
@@ -325,8 +325,8 @@ mod tests {
         assert_eq!(close, 7.0);
         assert_eq!(minimize, 8.0);
         assert_eq!(
-            window_control_glyph_size(WindowControlAction::Close, super::layout::WINDOW_CONTROL_LARGE_SIZE),
-            super::layout::WINDOW_CONTROL_LARGE_SIZE * 0.42
+            window_control_glyph_size(WindowControlAction::Close, crate::traffic_light::layout::WINDOW_CONTROL_LARGE_SIZE),
+            crate::traffic_light::layout::WINDOW_CONTROL_LARGE_SIZE * 0.42
         );
     }
 
