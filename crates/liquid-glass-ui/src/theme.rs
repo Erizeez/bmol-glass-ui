@@ -134,3 +134,69 @@ impl Default for UiTheme {
         Self(bmol_designs::UiTheme::default())
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    /// The adapter exists to change the colour *type*, not the values. Every
+    /// palette field must arrive with identical channels, for both schemes,
+    /// because the seventy-two access sites downstream now read through it.
+    #[test]
+    fn the_palette_adapter_preserves_every_channel() {
+        for source in [bmol_designs::UiTheme::light().palette(), bmol_designs::UiTheme::dark().palette()] {
+            let adapted: UiPalette = source.into();
+            let pairs = [
+                (adapted.window_background, source.window_background),
+                (adapted.sidebar_background, source.sidebar_background),
+                (adapted.content_background, source.content_background),
+                (adapted.group_background, source.group_background),
+                (adapted.group_border, source.group_border),
+                (adapted.separator, source.separator),
+                (adapted.text_primary, source.text_primary),
+                (adapted.text_secondary, source.text_secondary),
+                (adapted.text_tertiary, source.text_tertiary),
+                (adapted.accent, source.accent),
+                (adapted.selection, source.selection),
+                (adapted.sidebar_selection, source.sidebar_selection),
+                (adapted.hover, source.hover),
+                (adapted.control_track_off, source.control_track_off),
+                (adapted.shadow, source.shadow),
+            ];
+            for (iced, scene) in pairs {
+                assert_eq!(
+                    (iced.r, iced.g, iced.b, iced.a),
+                    (scene.r, scene.g, scene.b, scene.a)
+                );
+            }
+        }
+    }
+
+    /// `UiTheme` adds no policy of its own; it must answer exactly what the
+    /// design system answers, or the two would drift apart silently.
+    #[test]
+    fn the_theme_delegates_to_the_design_system() {
+        assert_eq!(UiTheme::light().scheme(), UiColorScheme::Light);
+        assert_eq!(UiTheme::dark().scheme(), UiColorScheme::Dark);
+        assert_eq!(UiTheme::default().scheme(), bmol_designs::UiTheme::default().scheme());
+
+        for role in [GlassRole::Sidebar, GlassRole::Toolbar, GlassRole::ContextMenu] {
+            assert_eq!(
+                UiTheme::dark().glass_shape(role),
+                bmol_designs::UiTheme::dark().glass_shape(role)
+            );
+            assert_eq!(
+                UiTheme::dark().glass_chrome(role),
+                bmol_designs::UiTheme::dark().glass_chrome(role)
+            );
+            assert_eq!(
+                UiTheme::light().glass_material(role),
+                bmol_designs::UiTheme::light().glass_material(role)
+            );
+            assert_eq!(
+                UiTheme::light().compositor_chrome(role),
+                bmol_designs::UiTheme::light().compositor_chrome(role)
+            );
+        }
+    }
+}
