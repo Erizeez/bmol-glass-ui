@@ -64,7 +64,31 @@ The layering above is the target; this is how far it has got.
 - [ ] `bmol-iced` still hosts the original copy of this crate and its `dock.rs`
       (application composition, which belongs at the app layer). Rewiring it to this
       crate is what finally deletes the old copy.
-- [ ] The asset helpers `app_icon_png` and `load_system_wallpaper_rgba` were used
-      only by `dock.rs`, which never lived here. When `dock.rs` moves to the app
-      layer it should take them from `bmol-window-platform` / `bmol-window-native`
-      rather than from `bmol-window-shell`.
+- [x] The asset helpers `app_icon_png` and `load_system_wallpaper_rgba` need no
+      move: both are already defined in `bmol-window-native`, the lowest layer, and
+      `bmol-window-shell` only re-exports them. `dock.rs` (which never lived here)
+      just has to import them from `bmol-window-native`. Nothing had to be sunk
+      into `bmol-window-platform`.
+
+### What the theme merge actually involves
+
+Measured against `bmol-designs`, the two `theme.rs` files differ in **one
+structural way**: the fork types `UiPalette`'s eighteen fields as `iced::Color`,
+while `bmol-designs` types them as the scene `Color`. `GlassChrome` is scene-typed
+in both, and the fork already writes its palette *values* in the scene type
+(`GlassColor::rgba(..)`) and converts at the boundary in a single helper.
+
+So under the "optional iced feature" plan the port is close to mechanical:
+
+- lift the fork's values, `GlassRole::ContextMenu`, `impl UiColorScheme` and
+  `impl GlassChrome` into `bmol-designs`, keeping the scene `Color` palette;
+- put the iced adapters (`from_iced`, the colour conversion) behind a new optional
+  `iced` feature;
+- switch this crate to re-export `bmol_designs`' theme instead of its own, which is
+  the part that needs the roughly eighteen palette-field accesses in
+  `components.rs`, `context_menu.rs`, `popover.rs` and `scroll_view.rs` to convert.
+
+Evidence that the fork is the authoritative copy: it carries six substantive
+commits (device-measured context-menu calibration, 64 pt heavy-blur dark/light
+modes, layered rendering work) against `bmol-designs`' two, and it has a
+`GlassRole::ContextMenu` variant that `bmol-designs` lacks.
