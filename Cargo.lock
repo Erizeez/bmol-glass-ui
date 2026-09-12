@@ -161,9 +161,10 @@ dependencies = [
 [[package]]
 name = "bmol-designs"
 version = "0.1.5"
-source = "git+https://github.com/Erizeez/bmol-designs?branch=main#e2b92d3f77bfcfd83481ac166d629addf07adfc0"
+source = "git+https://github.com/Erizeez/bmol-designs?branch=main#c8e4b60bc3496558ff20cb013b4f2cc2309cbcf1"
 dependencies = [
  "iced",
+ "liquid-glass-render",
  "liquid-rs",
  "squircle-rs",
 ]

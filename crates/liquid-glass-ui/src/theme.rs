@@ -12,7 +12,7 @@
 use iced::{Color as IcedColor, Theme};
 use liquid_glass_scene::{GlassMaterial, GlassShape};
 
-pub use bmol_designs::{GlassChrome, GlassRole, UiColorScheme, UiCornerStyle, to_iced};
+pub use bmol_designs::{ClarityPolicy, GlassChrome, GlassRole, UiColorScheme, UiCornerStyle, to_iced};
 
 /// The semantic palette in Iced's colour type.
 ///
