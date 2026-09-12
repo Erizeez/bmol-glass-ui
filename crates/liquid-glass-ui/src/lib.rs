@@ -14,7 +14,6 @@ pub mod icon;
 pub mod popover;
 pub mod scroll_view;
 mod theme;
-pub mod window;
 
 use std::sync::atomic::{AtomicU64, Ordering};
 
@@ -38,10 +37,6 @@ pub use scroll_view::{
     spring_scroll_view_with_config,
 };
 pub use theme::{GlassChrome, GlassRole, UiColorScheme, UiCornerStyle, UiPalette, UiTheme};
-pub use window::{
-    DEFAULT_WINDOW_CORNER_RADIUS, IcedWindowController, IcedWindowPolicy, WindowCommand,
-    WindowDragArea, WindowExpandBehavior,
-};
 
 use iced::advanced::text::Renderer as TextRenderer;
 use iced::{

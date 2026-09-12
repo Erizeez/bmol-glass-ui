@@ -11,7 +11,6 @@ iced = { version = "0.14.0", default-features = false, features = ["advanced", "
 liquid-glass-scene = { git = "https://github.com/Erizeez/liquid-rs", branch = "main" }
 squircle-rs = { git = "https://github.com/Erizeez/squircle-rs", tag = "v0.1.2" }
 bmol-designs = { git = "https://github.com/Erizeez/bmol-designs", tag = "v0.1.5" }
-bmol-window-shell = { git = "https://github.com/Erizeez/bmol-window-shell", branch = "main" }
 spring-rs = { git = "https://github.com/Erizeez/spring-rs.git", tag = "v0.1.0" }
 vibrancy-rs = { git = "https://github.com/Erizeez/vibrancy-rs", tag = "v0.1.1" }
 

@@ -38,16 +38,28 @@ liquid-glass-ui         shared iced glass components   <-- this repository
 
 ## Migration status
 
-This repository was created by moving the crate out of `bmol-iced` verbatim, so the
-layering above is the target, not yet the state:
+The layering above is the target; this is how far it has got.
 
 - [x] Crate moved out of `bmol-iced` and builds standalone here.
-- [ ] `assets` helpers (`app_icon_png`, `load_system_wallpaper_rgba`) sink into
-      `bmol-window-platform`, which removes the `bmol-window-shell` dependency below.
-- [ ] `theme.rs` (a fork of `bmol-designs::theme`) merges back into `bmol-designs`,
-      with the iced-facing adapters behind an optional feature.
-- [ ] `window.rs` retires: the window semantics it re-exports stay in `bmol-window-shell`.
-- [ ] `dock.rs` (application composition) moves to `bmol-iced`.
-
-Until those land, `bmol-window-shell` is still a dependency of this crate and
-`bmol-iced` still hosts the original copy of the crate.
+- [x] `window.rs` retired. It was only a facade over twelve window-semantics items
+      (`WindowShellController`, `setup_native_window`, chrome plan and metrics, the
+      drag bar, rim and resizer), which stay in `bmol-window-shell` where they belong.
+      `DEFAULT_WINDOW_CORNER_RADIUS` is a `bmol-designs` token and can be taken from
+      there.
+- [x] Consequently this crate no longer depends on `bmol-window-shell` at all;
+      `cargo tree` shows the shell absent from the whole graph. That is the
+      "siblings, not parent and child" property, and it is worth guarding with a
+      `cargo tree` check in CI.
+- [ ] `theme.rs` is still a fork of `bmol-designs::theme`. It should merge back with
+      the iced-facing adapters (`UiTheme::from_iced`, `ClarityPolicy`) behind an
+      optional `iced` feature. This step also has to move `bmol-designs` off
+      `liquid-rs` tag `v0.1.3` onto `branch = "main"`: today the graph carries two
+      copies of `liquid-glass-scene`, so a material from `bmol-designs` is not the
+      same type as one from this crate and must not be mixed.
+- [ ] `bmol-iced` still hosts the original copy of this crate and its `dock.rs`
+      (application composition, which belongs at the app layer). Rewiring it to this
+      crate is what finally deletes the old copy.
+- [ ] The asset helpers `app_icon_png` and `load_system_wallpaper_rgba` were used
+      only by `dock.rs`, which never lived here. When `dock.rs` moves to the app
+      layer it should take them from `bmol-window-platform` / `bmol-window-native`
+      rather than from `bmol-window-shell`.
